@@ -10,17 +10,17 @@ typedef struct heapType {
 	element heap[MAX_ELEMENT];
 	int heap_size;
 }HeapType;
-
+// 생성 함수
 HeapType* create()
 {
 	return (HeapType*)malloc(sizeof(HeapType));
 }
-
+// 초기화
 void init(HeapType *h)
 {
 	h->heap_size = 0;
 }
-
+// 삽입 함수
 void insert_max_heap(HeapType* h, element item)
 {
 	int i;
@@ -33,7 +33,7 @@ void insert_max_heap(HeapType* h, element item)
 	}
 	h->heap[i] = item;
 }
-
+// 삭제 함수
 element delete_max_heap(HeapType* h)
 {
 	int parent, child;
@@ -54,7 +54,7 @@ element delete_max_heap(HeapType* h)
 	h->heap[parent] = temp;
 	return item;
 }
-
+// 히프 정렬
 void heap_sort(element a[], int n)
 {
 	int i;
@@ -65,7 +65,7 @@ void heap_sort(element a[], int n)
 	for (i = 0; i < n; i++) {
 		insert_max_heap(h, a[i]);
 		for (int j = 1; j <= h->heap_size; j++) {
-			printf("%d ", h->heap[j]);
+			printf("%d ", h->heap[j]); // 프린트
 		}
 		printf("\n");
 	}
@@ -73,7 +73,7 @@ void heap_sort(element a[], int n)
 	for (i = (n - 1); i >= 0; i--) {
 		a[i] = delete_max_heap(h);
 		for (int j = 1; j <= h->heap_size; j++) {
-			printf("%d ", h->heap[j]);
+			printf("%d ", h->heap[j]); // 프린트
 		}
 		printf("\n");
 	}
@@ -82,7 +82,7 @@ void heap_sort(element a[], int n)
 
 int main(void)
 {
-#define SIZE 17
+	#define SIZE 17 // 배열 사이즈
 	element list[SIZE] = { 34,12,76,59,32,55,88,26,16,79,34,85,29,78,41,56,86 };
 	
 	printf("<정렬>\n");
